@@ -1,5 +1,6 @@
 <template>
     <div v-if="attached && closable" class="tags has-addons">
+        <b-icon custom-class="" v-if="icon" :icon="icon" :size="size" :type="iconType" :pack="iconPack" />
         <span
             class="tag"
             :class="[type, size, { 'is-rounded': rounded }]">
@@ -33,6 +34,7 @@
         v-else
         class="tag"
         :class="[type, size, { 'is-rounded': rounded }]">
+        <b-icon custom-class="" v-if="icon" :icon="icon" :size="size" :type="iconType" :pack="iconPack" />
         <span :class="{ 'has-ellipsis': ellipsis }">
             <slot/>
         </span>
@@ -67,6 +69,9 @@ export default {
             default: true
         },
         ariaCloseLabel: String,
+        icon: String,
+        iconType: String,
+        iconPack: String,
         closeType: String,
         closeIcon: String,
         closeIconPack: String,
@@ -81,7 +86,15 @@ export default {
             if (this.disabled) return
 
             this.$emit('close', event)
-        }
+        },
+        /**
+        * Emit click event when tag is clicked.
+        */
+        click(event) {
+            if (this.disabled) return
+
+            this.$emit('click', event)
+        },
     }
 }
 </script>
