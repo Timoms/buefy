@@ -14,7 +14,7 @@
             :aria-label="ariaCloseLabel"
             :tabindex="tabstop ? 0 : false"
             :disabled="disabled"
-            :class="[size,
+            :class="[size, 
                      closeType,
                      {'is-rounded': rounded},
                      closeIcon ? 'has-delete-icon' : 'is-delete']"
